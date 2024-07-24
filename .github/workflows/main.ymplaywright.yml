@@ -19,10 +19,13 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '22'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install
 
       - name: Wait for deployment to be ready
         run: npx wait-on https://playwright-react.vercel.app/
